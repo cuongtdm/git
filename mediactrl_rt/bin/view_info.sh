@@ -1,0 +1,1 @@
+./mediactrl.sh view info

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- Log4j Configuration -->
+<!--
+| For more configuration infromation and examples see the Jakarta Log4j
+| website: http://jakarta.apache.org/log4j
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+<!-- ============================== -->
+<!-- Append messages to the console -->
+<!-- ==============================-->
+<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+<param name="Target" value="System.out"/>
+<param name="Threshold" value="OFF"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<!-- Root -->
+<!-- Buffer events and log them asynchronously -->
+<appender name="ROOT_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="INFO"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<!-- alarm -->
+<appender name="ALARM_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="WARN"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-20c] - %m%n"/>
+</layout>
+</appender>
+
+<!-- ROOT category -->
+<appender name="ROOT_ASYNC" class="org.apache.log4j.AsyncAppender">
+ <appender-ref ref="CONSOLE"/>
+ <appender-ref ref="ROOT_FILE"/>
+ <appender-ref ref="ALARM_FILE"/>
+ <!-- appender-ref ref="SOCKET"/ -->
+</appender>
+<!-- END ROOT category -->
+
+<!-- begin appender for ininterface-->
+<appender name="MAIN_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="INFO"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<appender name="IPCSERVER_FOR_MEDIACTRL_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="ALL"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<appender name="HTTPSERVER_FOR_MEDIACTRL_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="ALL"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<appender name="TRAFFIC_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="ALL"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<appender name="PROCESSING_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+<param name="Threshold" value="ALL"/>
+<param name="File" value="/opt/vrbt/log/swapfile_ringtone/main.log"/>
+<param name="Append" value="true"/>
+<param name="DatePattern" value=".yyyyMMdd_HH"/>
+<layout class="org.apache.log4j.PatternLayout">
+<param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] - [%-16t] - %m%n"/>
+</layout>
+</appender>
+
+<category name="main" additivity="false"> 
+ <appender-ref ref="MAIN_FILE"/> 
+ <appender-ref ref="ALARM_FILE"/>
+</category>
+
+<category name="ipcserver_for_mediactrl" additivity="false"> 
+ <appender-ref ref="IPCSERVER_FOR_MEDIACTRL_FILE"/>
+ <appender-ref ref="ALARM_FILE"/>
+</category>
+
+<category name="httpserver_for_mediactrl" additivity="false"> 
+ <appender-ref ref="HTTPSERVER_FOR_MEDIACTRL_FILE"/>
+ <appender-ref ref="ALARM_FILE"/>
+</category>
+
+<category name="traffic" additivity="false"> 
+ <appender-ref ref="TRAFFIC_FILE"/>
+</category>
+
+<category name="processing" additivity="false"> 
+ <appender-ref ref="PROCESSING_FILE"/>
+ <appender-ref ref="ALARM_FILE"/>
+</category>
+
+<!-- Setup the Root category -->
+<root>
+ <appender-ref ref="ROOT_ASYNC"/>
+</root>
+</log4j:configuration>

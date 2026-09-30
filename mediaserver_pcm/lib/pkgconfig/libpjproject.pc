@@ -1,0 +1,14 @@
+# Package Information for pkg-config
+
+prefix=/home/longnd/workspace/pjsip-video-support/pjproject-2.12.1/install
+exec_prefix=${prefix}
+libdir=/home/longnd/workspace/pjsip-video-support/pjproject-2.12.1/install/lib
+includedir=/home/longnd/workspace/pjsip-video-support/pjproject-2.12.1/install/include
+
+Name: libpjproject
+Description: Multimedia communication library
+URL: http://www.pjsip.org
+Version: 2.12.1
+Libs: -L/home/longnd/workspace/pjsip-video-support/pjproject-2.12.1/install/lib -lpjsua2 -lstdc++ -lpjsua -lpjsip-ua -lpjsip-simple -lpjsip -lpjmedia-codec -lpjmedia -lpjmedia-videodev -lpjmedia-audiodev -lpjmedia -lpjnath -lpjlib-util -lpj
+Libs.private:  -lsrtp -lresample -lyuv -lwebrtc  -luuid -lm -lrt -lpthread  -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2  -lavdevice -lavformat -lavcodec -lswscale -lavutil  
+Cflags: -I/home/longnd/workspace/pjsip-video-support/pjproject-2.12.1/install/include -DPJ_AUTOCONF=1  -DPJ_IS_BIG_ENDIAN=0 -DPJ_IS_LITTLE_ENDIAN=1

@@ -1,0 +1,9 @@
+Update for AMR
+untar các file sau ra thư mục mediaserver:
+pjproject-lib-2.12.1.tar.gz
+opencore-amr-lib.tar.gz
+mediaserver-update-1.5.12-20230603.tar.gz
+
+Edit file config mediaserver.cfg
+	Thêm các mục sau trong section SIP
+		audio_codec_list=PCMA=0|PCMU=0|AMR=128

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow>
+	<node from="Nothing" skipValidation="true">
+		<node on="EvAutoStart" to="USR_getProfile">
+			<!-- 1. Lấy được profile thì gọi lệnh AnswerCall sang MediaServer -->
+			<!-- <node on="EvGoToAnswerCall" to="USR_answerCall"> -->
+				<!-- 1.1. Play file ringtone -->
+				<node on="EvGoToPlayRingtone" to="MNU_playRingtone" promptFile="%s" jumpNextNode="EvGoToPlayRingtone:MNU_playRingtone" wrongOptionFile="wrong_option.wav" maxRetry="999999" timeoutDtmf="99999" maxLengthDtmf="1" optionKeyNull="EvGoToPlayRingtone:MNU_playRingtone" delayAfterVideoAvailableMs="500">
+					<!-- 1.1.1. Đang play file ringtone mà bấm phím 1 thì mua bài hát -->
+					<node on="EvGoToBuySong" to="USR_buySong" jumpNextNode="EvGoToPlayRingtone:MNU_playRingtone">
+						<!-- Không phải vẽ ở đây nữa vì đã vẽ ở TRÊN -->
+					</node>
+				</node>
+			<!-- </node> -->
+
+			<!-- 2.1. Không lấy được profile thì kết thúc cuộc gọi -->
+			<node on="EvEndCall" finish="USR_endCall">
+
+			<!-- 2.2. Không lấy được profile thì play IVR chao mung -->
+			<!-- <node on="EvGoToPlayDefault" to="MNU_playDefault" promptFile="en_prompt_welcome.wav" jumpNextNode="EvGoToPlayDefault:MNU_playDefault" wrongOptionFile="wrong_option.wav" maxRetry="999999" timeoutDtmf="99999" maxLengthDtmf="1" optionKeyNull="EvGoToPlayDefault:MNU_playDefault"> -->
+			<!-- Kết thúc cuộc gọi ở đây! -->
+
+			</node>
+		</node>
+	</node>
+</flow>

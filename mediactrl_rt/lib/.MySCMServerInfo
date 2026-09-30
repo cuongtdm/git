@@ -1,0 +1,8 @@
+SCMBranch=CRBT_1.0_METFONE
+SCMRepository=CRBT_1.0_METFONE/04.Construction/Bin/RT
+flow_core_common_rt.jar;3101291338;1;1596612894;
+flow_data_common_rt.jar;1750226734;1;1596612895;
+mediactrl_common_rt.jar;3538220469;1;1596614160;
+mediactrl_rt.jar;719629016;1;1596614159;
+rt_lib_rt.jar;1796907464;1;1596614159;
+voicegw_common_rt.jar;3838667871;1;1596612896;

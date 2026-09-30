@@ -1,0 +1,23 @@
+# Generated deployment artifacts and runtime data
+**/dist/
+**/*.zip
+**/*.rar
+**/backup/
+**/nohup.out
+**/screenlog.0
+**/*.log
+**/core
+**/core.*
+
+# Captures and private deployment material
+**/*.pcap
+**/*.pcap0
+**/*.pcap1
+**/*.pcap2
+**/*.lic
+CRBT_Movitel/inventory.json
+
+# Legacy OpenSIPS material includes historical certificates and keys. The
+# CRBT_Movitel generator creates the deployment config from inventory instead.
+opensips/
+

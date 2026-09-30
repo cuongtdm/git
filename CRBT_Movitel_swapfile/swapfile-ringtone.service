@@ -1,0 +1,14 @@
+[Unit]
+Description=CRBT Movitel ringtone swapfile cache
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/u01/crbt-movitel/swapfile_ringtone/bin
+ExecStartPre=/usr/bin/mkdir -p /u01/crbt-movitel/ramdisk /u01/crbt-movitel/log/swapfile_ringtone
+ExecStart=/usr/bin/java -noverify -Xms512M -Xmx512M -cp /u01/crbt-movitel/swapfile_ringtone/lib/*:/u01/crbt-movitel/swapfile_ringtone/bin/swapfile.jar com.elcom.xrbt.swapfile.SwapFileRingtoneMain 1 swapfile1 /u01/crbt-movitel/swapfile_ringtone/config/
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

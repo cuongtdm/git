@@ -1,0 +1,1 @@
+./mediactrl.sh start

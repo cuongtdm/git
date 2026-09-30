@@ -1,0 +1,13 @@
+[Unit]
+Description=CRBT local random-song RT selector
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/crbt-local-rt
+ExecStart=/usr/bin/python3 /opt/vrbt/bin/local_rt/local_rt.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

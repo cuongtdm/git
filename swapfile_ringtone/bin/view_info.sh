@@ -1,0 +1,1 @@
+./swapfile.sh view info

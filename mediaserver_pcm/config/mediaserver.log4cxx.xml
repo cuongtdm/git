@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- Log4j Configuration -->
+<!--
+| For more configuration infromation and examples see the Jakarta Log4j
+| website: http://jakarta.apache.org/log4j
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+  <!-- ============================== -->
+  <!-- Append messages to the console -->
+  <!-- ==============================-->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out"/>
+    <param name="Threshold" value="OFF"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] %C{2} (%F:%L) - %c - %m%n"/>
+    </layout>
+  </appender>
+
+
+  <!-- Root -->
+  <!-- Buffer events and log them asynchronously -->
+
+
+  <!-- Buffer events and log them asynchronously -->
+  <appender name="SIP" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="Threshold" value="DEBUG"/>
+    <param name="File" value="/opt/vrbt/log/mediaserver_pcm/mediaserver.log"/>
+    <param name="Append" value="true"/>
+    <param name="DatePattern" value=".yyyyMMdd_HH"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <!-- <param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] %C{2} (%F:%L) - %c - %m%n" /> -->
+        <param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] %C{2}.%M:%L [%t] - %m%n" />
+    </layout>
+  </appender>
+
+  <!-- Buffer events and log them asynchronously -->
+  <appender name="SIPSTACK" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="Threshold" value="DEBUG"/>
+    <param name="File" value="/opt/vrbt/log/mediaserver_pcm/sipstack.log"/>
+    <param name="Append" value="true"/>
+    <param name="DatePattern" value=".yyyyMMdd_HH"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <!-- <param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] %C{2} (%F:%L) - %c - %m%n" /> -->
+        <param name="ConversionPattern" value="[%-5p] - [%-23d{ISO8601}] %C{2}.%M:%L [%t] - %m%n" />
+    </layout>
+  </appender>
+
+
+
+
+    <!-- ROOT category -->
+  <appender name="ROOT_ASYNC" class="org.apache.log4j.AsyncAppender">
+    <!-- appender-ref ref="CONSOLE"/ -->
+    <!-- -<appender-ref ref="CPY"/>  -->
+    <appender-ref ref="SIP"/>
+	
+  </appender>
+
+    <!-- ROOT category -->
+  <appender name="SIPSTACK_ASYNC" class="org.apache.log4j.AsyncAppender">
+    <!-- appender-ref ref="CONSOLE"/ -->
+    <!-- -<appender-ref ref="CPY"/>  -->
+    <appender-ref ref="SIPSTACK"/>
+  </appender>
+  
+
+  <category name="SIPSTACK" additivity ="false">
+        <priority value ="debug" />
+        <appender-ref ref="SIPSTACK_ASYNC"/>
+  </category>
+
+  <!-- Setup the Root category -->
+  <root>
+    <priority value="all" />
+    <appender-ref ref="ROOT_ASYNC"/>
+  </root>
+  
+</log4j:configuration>

@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenSIPS CRBT Movitel SIP Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/mkdir -p /run/opensips
+ExecStart=/usr/bin/env opensips -f /u01/crbt-movitel/opensips/opensips.cfg -P /run/opensips/opensips.pid
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/opensips/opensips.pid
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

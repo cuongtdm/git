@@ -1,0 +1,43 @@
+{
+  "projectName": "CRBT Movitel",
+  "opensipsModulePath": "/usr/lib64/opensips/modules/",
+  "mysql": {
+    "host": "10.229.4.25",
+    "database": "opensip",
+    "user": "opensip",
+    "password": "CHANGE_ME"
+  },
+  "opensipsNodes": ["10.229.4.20", "10.229.4.21"],
+  "mediaNodes": [
+    { "ip": "10.229.4.20", "session": "ms1" },
+    { "ip": "10.229.4.21", "session": "ms2" },
+    { "ip": "10.229.4.22", "session": "ms3" }
+  ],
+  "service": {
+    "resourceName": "vrbtpcm",
+    "sipPort": 5062,
+    "rtpStartPort": 10000,
+    "rtpPortRange": 65000,
+    "loadBalancerGroup": 1
+  },
+  "mediaCtrl": {
+    "rtHost": "http://127.0.0.1:8081",
+    "apsServerUrl": "http://127.0.0.1:18080/api/v1/core/copy-song",
+    "swapfileHost": "127.0.0.1",
+    "swapfilePort": 9981
+  },
+  "localRt": {
+    "bind": "127.0.0.1",
+    "port": 8081,
+    "fallbackSong": "song-1.wav",
+    "dbHost": "10.229.4.25",
+    "dbPort": 3306,
+    "dbName": "movitel",
+    "dbUser": "opensip",
+    "dbPassword": "CHANGE_ME",
+    "profileCacheSeconds": 900,
+    "profileCacheMaxEntries": 1000,
+    "msisdnPrefix": "509",
+    "calledRoutingPrefix": "1221"
+  }
+}

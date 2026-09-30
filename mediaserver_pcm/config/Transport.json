@@ -1,0 +1,38 @@
+{ 
+   "TransportConfig":      { 
+      "port":                 5062,
+      "portRange":            0,
+      "publicAddress":        "",
+      "boundAddress":         "192.168.10.1",
+      "qosType":              0,
+      "qosParams":            { 
+         "qos.flags":            0,
+         "qos.dscp_val":         0,
+         "qos.so_prio":          0,
+         "qos.wmm_prio":         0
+      },
+      "TlsConfig":            { 
+         "CaListFile":           "",
+         "certFile":             "",
+         "privKeyFile":          "",
+         "password":             "",
+         "CaBuf":                "",
+         "certBuf":              "",
+         "privKeyBuf":           "",
+         "method":               0,
+         "ciphers":              [ ],
+         "verifyServer":         false,
+         "verifyClient":         false,
+         "requireClientCert":    false,
+         "msecTimeout":          0,
+         "qosType":              0,
+         "qosParams":            { 
+            "qos.flags":            0,
+            "qos.dscp_val":         0,
+            "qos.so_prio":          0,
+            "qos.wmm_prio":         0
+         },
+         "qosIgnoreError":       true
+      }
+   }
+}

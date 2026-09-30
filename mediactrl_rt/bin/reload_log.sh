@@ -1,0 +1,1 @@
+./mediactrl.sh reload log
