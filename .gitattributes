@@ -1,0 +1,8 @@
+# Pre-built runtime artifacts do not benefit from Git delta compression.
+*.jar -delta
+*.so -delta
+*.a -delta
+*.jmod -delta
+*.wav -delta
+mediaserver -delta
+mediaserver_* -delta
